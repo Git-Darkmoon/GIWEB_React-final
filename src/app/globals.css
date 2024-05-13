@@ -2,32 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  /* scrollbar-gutter: stable; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-blacky;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::-moz-selection {
+  @apply text-secondary;
+}
+
+::selection {
+  @apply text-secondary;
+}
+
+/* total width */
+body::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0.5rem;
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+  background-color: #151515;
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(159, 75, 255, 0.619);
+  border-radius: 1rem;
+  border: 0.3rem solid transparent;
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+.text-gradient {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, #ee82ee, #ff6347);
+}
+
+.bg-gradient {
+  background-image: linear-gradient(45deg, #ee82ee, #ff6347);
 }
